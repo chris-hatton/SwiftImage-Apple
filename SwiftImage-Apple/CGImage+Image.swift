@@ -12,35 +12,34 @@ import SwiftImage
 
 extension CGImage : Image
 {
-    public typealias PixelType = RGBPixel
-    public typealias PixelSource = () -> PixelType?
+    public typealias PixelColor = RGBColor
+    public typealias PixelColorSource = () -> PixelColor?
     
-    public func read( region: ImageRegion ) -> PixelSource
+    public func read( region: ImageRegion ) -> PixelColorSource
     {
-        let bytesPerPixel : Int = bitsPerPixel / bitsPerComponent
+        guard let rawData : CFData = self.dataProvider?.data else { fatalError() }
+        guard let pixelBytePtr : UnsafePointer<UInt8> = CFDataGetBytePtr( rawData ) else { fatalError() }
         
-        let rawData : CFData = self.dataProvider!.data!
-        
-        guard var pixelPtr = CFDataGetBytePtr( rawData ) else { fatalError() }
-        
-        pixelPtr = pixelPtr.advanced( by: Int( region.y ) * bytesPerRow ) + ( Int( region.x ) * bytesPerPixel )
-        
-        let widthOutsideRegion = Int( self.width - region.width )
-        
-        let nextLine : ()->Void = { pixelPtr = pixelPtr.advanced( by: widthOutsideRegion * ( bytesPerPixel - 1 ) ) }
-        
-        let nextPixel : ()->PixelType =
+        return pixelBytePtr.withMemoryRebound(to: RGBColor.self, capacity: region.pixelCount)
         {
-            let r : Double = Double( pixelPtr.pointee / 255 )
-            pixelPtr = pixelPtr.advanced(by:1)
-            let g : Double = Double( pixelPtr.pointee / 255 )
-            pixelPtr = pixelPtr.advanced(by:1)
-            let b : Double = Double( pixelPtr.pointee / 255 )
-            pixelPtr = pixelPtr.advanced(by:1)
+            pixelPtr in
             
-            return RGBPixel(r,g,b)
+            var mutablePixelPtr = UnsafeMutablePointer<RGBColor>(mutating: pixelPtr)
+            
+            mutablePixelPtr = mutablePixelPtr.advanced( by: Int( region.y ) * width ) + Int( region.x )
+            
+            let widthOutsideRegion = Int( self.width - region.width )
+            
+            let nextLine : ()->Void = { mutablePixelPtr = mutablePixelPtr.advanced( by: widthOutsideRegion ) }
+            
+            let nextPixel : ()->PixelColor =
+            {
+                let pixel = mutablePixelPtr.pointee
+                mutablePixelPtr = mutablePixelPtr.successor()
+                return pixel
+            }
+            
+            return regionRasterSource( region, nextPixel: nextPixel, nextLine: nextLine )
         }
-        
-        return regionRasterSource( region, nextPixel: nextPixel, nextLine: nextLine )
     }
 }

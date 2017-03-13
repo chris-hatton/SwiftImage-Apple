@@ -26,12 +26,12 @@ extension CIImage : ConvertibleImage
     @nonobjc public func convert() throws -> CVPixelBuffer
     {
         let cgImage = self.cgImage!
-        return cgImage.convert()
+        return try cgImage.convert()
     }
     
-    @nonobjc public func convert() throws -> GenericImage<RGBPixel>
+    @nonobjc public func convert() throws -> GenericImage<RGBColor>
     {
         let cgImage = self.cgImage!
-        return cgImage.convert()
+        return try cgImage.convert()
     }
 }

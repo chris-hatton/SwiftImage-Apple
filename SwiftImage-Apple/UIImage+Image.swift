@@ -9,10 +9,10 @@ import SwiftImage
 
 extension UIImage : Image
 {
-    public typealias PixelType   = RGBPixel
-    public typealias PixelSource = ()->PixelType?
+    public typealias PixelColor = RGBColor
+    public typealias PixelColorSource = ()-> PixelColor?
     
-    public func read( region: ImageRegion ) -> PixelSource
+    public func read( region: ImageRegion ) -> PixelColorSource
     {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         
@@ -52,9 +52,9 @@ extension UIImage : Image
         var byteIndex  : Int = 0
         let pixelCount : Int = Int( region.width * region.height )
         
-        let pixelSource : PixelSource =
+        let PixelColorSource : PixelColorSource =
         {
-            let pixel : PixelType?
+            let pixel : PixelColor?
             
             if pixelIndex < pixelCount
             {
@@ -64,7 +64,7 @@ extension UIImage : Image
                 
                 byteIndex += 1 // Skip Alpha
                 
-                pixel = RGBPixel(r,g,b)
+                pixel = RGBColor(r,g,b)
                 
                 pixelIndex += 1
             }
@@ -78,7 +78,7 @@ extension UIImage : Image
         
         UIGraphicsPopContext()
         
-        return pixelSource
+        return PixelColorSource
     }
 
     public var width : Int

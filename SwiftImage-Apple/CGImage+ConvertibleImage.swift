@@ -9,31 +9,53 @@ import SwiftImage
 
 extension CGImage
 {
-    public func convert() -> UIImage
+    public func convert() throws -> UIImage
     {
         return UIImage(cgImage: self)
     }
     
-    public func convert() -> GenericImage<RGBPixel>
+    public func convert() throws -> GenericImage<RGBColor>
     {
-        let fillPixel = RGBPixel(0,0,0)
+        let fillColor = RGBColor(0,0,0)
+        let image = GenericImage<RGBColor>(width: self.width, height: self.height, fill: fillColor)
         
-        let image = GenericImage<RGBPixel>(width: self.width, height: self.height, fill: fillPixel )
+        // Check if the image is already in native format and do byte copy if possible
         
-        let region = ImageRegion( image: self )
+        let isNativeFormat : Bool = true
         
-        let regionPixelSource : PixelSource = self.read( region: region )
-        
-        image.write( region: region, pixelSource: regionPixelSource )
-        
+        if isNativeFormat
+        {
+            let cfData    : CFData               = (self.dataProvider?.data)!
+            let srcPtr    : UnsafePointer<UInt8> = CFDataGetBytePtr(cfData)
+            let srcRawPtr : UnsafeRawPointer     = UnsafeRawPointer(srcPtr)
+            
+            let _ = image.pixels.withUnsafeMutableBufferPointer
+            {
+                destinationBufferPtr in
+                
+                let destinationRawPtr = destinationBufferPtr.baseAddress!
+            
+                memcpy(destinationRawPtr, srcRawPtr, MemoryLayout<RGBColor>.size * width * height)
+            }
+            
+            let region = ImageRegion( image: self )
+            
+            let regionPixelColorSource: PixelColorSource = self.read( region: region )
+            
+            image.write( region: region, pixelColorSource: regionPixelColorSource)
+        }
+        else  // Non-native format; perform a lengthier draw & copy.
+        {
+            fatalError( "Not yet implemented" )
+        }
+
         return image
     }
     
-    public func convert() -> CVPixelBuffer
+    public func convert() throws -> CVPixelBuffer
     {
-        let
-        width  : Int = Int( self.width  ),
-        height : Int = Int( self.height )
+        let width  : Int = Int( self.width  )
+        let height : Int = Int( self.height )
         
         let frameSize : CGSize = CGSize( width: width, height: height )
         
@@ -83,8 +105,54 @@ extension CGImage
         return buffer
     }
     
-    public func convert() -> CIImage
+    public func convert() throws -> CIImage
     {
         return CIImage(cgImage: self)
     }
+    
+    /*
+    private func getRGBPixelColorSource() -> PixelColorSource
+    {
+        let bytesPerPixel : Int = 4
+        let colorSpace : CGColorSpace = CGColorSpaceCreateDeviceRGB()
+        let rawData : UnsafeMutablePointer<UInt8> = calloc( width * height * bytesPerPixel, MemoryLayout<UInt8>.size).assumingMemoryBound(to: UInt8.self)
+        
+        let bytesPerRow      : Int = bytesPerPixel * width
+        let bitsPerComponent : Int = 8
+        let context          : CGContext = CGBitmapContextCreate(
+            rawData,
+            width,
+            height,
+            bitsPerComponent,
+            bytesPerRow,
+            colorSpace,
+            kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big
+        )
+        
+        let drawRect = CGRect( x:0, y:0, width:CGFloat(width), height:CGFloat(height) )
+        
+        context.draw( self, in: drawRect)
+        
+        let source : PixelColorSource =
+        {
+            () -> RGBPixel? in
+            
+            if true
+            {
+                let isLast = false
+                
+                if isLast
+                {
+                    free(rawData)
+                }
+            }
+            else
+            {
+                return nil
+            }
+        }
+        
+        return source
+    }
+ */
 }

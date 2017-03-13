@@ -11,9 +11,9 @@ import SwiftImage
 
 extension CVPixelBuffer : ConvertibleImage
 {
-    public func convert() -> CGImage
+    public func convert() throws -> CGImage
     {
-        let ciImage: CIImage = self.convert()
+        let ciImage: CIImage = try self.convert()
         
         let temporaryContext : CIContext = CIContext()
         
@@ -22,19 +22,19 @@ extension CVPixelBuffer : ConvertibleImage
         return temporaryContext.createCGImage( ciImage, from: rect )!
     }
     
-    public func convert() -> CIImage
+    public func convert() throws -> CIImage
     {
         return CIImage( cvPixelBuffer: self )
     }
     
-    public func convert() -> UIImage
+    public func convert() throws -> UIImage
     {
-        return UIImage( cgImage: convert() as CGImage )
+        return UIImage( cgImage: try convert() as CGImage )
     }
     
-    public func convert() -> GenericImage<RGBPixel>
+    public func convert() throws -> GenericImage<RGBColor>
     {
-        let cgImage : CGImage = self.convert()
-        return cgImage.convert()
+        let cgImage : CGImage = try self.convert()
+        return try cgImage.convert()
     }
 }

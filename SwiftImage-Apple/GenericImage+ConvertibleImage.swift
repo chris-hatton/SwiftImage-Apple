@@ -15,7 +15,7 @@ private struct Info
 
 extension GenericImage : ConvertibleImage
 {
-    public func convert() -> CGImage
+    public func convert() throws -> CGImage
     {
         return self.pixels.withUnsafeMutableBufferPointer
         {
@@ -110,21 +110,21 @@ extension GenericImage : ConvertibleImage
         }
     }
     
-    public func convert() -> UIImage
+    public func convert() throws -> UIImage
     {
-        let cgImage : CGImage = self.convert()
+        let cgImage : CGImage = try self.convert()
         return UIImage(cgImage: cgImage)
     }
     
-    public func convert() -> CVPixelBuffer
+    public func convert() throws -> CVPixelBuffer
     {
-        let cgImage : CGImage = self.convert()
-        return cgImage.convert()
+        let cgImage : CGImage = try self.convert()
+        return try cgImage.convert()
     }
     
-    public func convert() -> CIImage
+    public func convert() throws -> CIImage
     {
-        let cgImage : CGImage = self.convert()
-        return cgImage.convert()
+        let cgImage : CGImage = try self.convert()
+        return try cgImage.convert()
     }
 }

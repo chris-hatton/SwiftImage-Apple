@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E12655E1C15A022A580EAA4 /* UIColor+ConvertibleColor.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3E126F71CB0134B209C2D4B5 /* UIColor+ConvertibleColor.swift */; };
+		837215D91DC1726F00CC1280 /* UIColor+ConvertibleColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E126F71CB0134B209C2D4B5 /* UIColor+ConvertibleColor.swift */; };
 		83B76CAE1DAA199C006661CC /* SwiftImageApple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B76CA41DAA199C006661CC /* SwiftImageApple.framework */; };
 		83B76CB31DAA199C006661CC /* SwiftImage_AppleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B76CB21DAA199C006661CC /* SwiftImage_AppleTests.swift */; };
 		83B76CB51DAA199C006661CC /* SwiftImage-Apple.h in Headers */ = {isa = PBXBuildFile; fileRef = 83B76CA71DAA199C006661CC /* SwiftImage-Apple.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E126F71CB0134B209C2D4B5 /* UIColor+ConvertibleColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ConvertibleColor.swift"; sourceTree = "<group>"; };
 		83B76CA41DAA199C006661CC /* SwiftImageApple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftImageApple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B76CA71DAA199C006661CC /* SwiftImage-Apple.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftImage-Apple.h"; sourceTree = "<group>"; };
 		83B76CA81DAA199C006661CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E126E20C0ECF9DEED943C89 /* Conform */ = {
+			isa = PBXGroup;
+			children = (
+				3E126F71CB0134B209C2D4B5 /* UIColor+ConvertibleColor.swift */,
+			);
+			name = Conform;
+			sourceTree = "<group>";
+		};
 		83B76C9A1DAA199C006661CC = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +170,7 @@
 				83CB8A0F1DAA1D7D0035084B /* CVPixelBuffer+MutableImage.swift */,
 				83CB8A101DAA1D7D0035084B /* CIImage+Image.swift */,
 				83CB8A111DAA1D7D0035084B /* UIImage+Image.swift */,
+				3E126E20C0ECF9DEED943C89 /* Conform */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -241,7 +253,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Chris Hatton";
 				TargetAttributes = {
 					83B76CA31DAA199C006661CC = {
@@ -303,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E12655E1C15A022A580EAA4 /* UIColor+ConvertibleColor.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				837215D91DC1726F00CC1280 /* UIColor+ConvertibleColor.swift in Sources */,
 				83FA86EA1DAA2A4800FF78C6 /* GenericImage+ConvertibleImage.swift in Sources */,
 				83FA86EB1DAA2A4800FF78C6 /* CGImage+ConvertibleImage.swift in Sources */,
 				83FA86EC1DAA2A4800FF78C6 /* UIImage+ConvertibleImage.swift in Sources */,
@@ -374,6 +388,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -427,6 +442,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

@@ -9,17 +9,17 @@ import SwiftImage
 
 extension CIImage : Image
 {
-    public typealias PixelType   = RGBPixel
-    public typealias PixelSource = ()->PixelType?
+    public typealias PixelColor   = RGBColor
+    public typealias PixelColorSource = ()->PixelColor?
     
-    public func read( region: ImageRegion ) -> PixelSource
+    public func read( region: ImageRegion ) -> PixelColorSource
     {
-        let pixelSource : PixelSource =
+        let PixelColorSource : PixelColorSource =
         {
                 return nil
         }
         
-        return pixelSource
+        return PixelColorSource
     }
     
     public var width : Int

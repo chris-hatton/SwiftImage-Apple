@@ -14,10 +14,10 @@ import SwiftImage
 
 extension CVPixelBuffer : MutableImage
 {
-    public typealias PixelType   = RGBPixel
-    public typealias PixelSource = ()->PixelType?
+    public typealias PixelColor   = RGBColor
+    public typealias PixelColorSource = ()->PixelColor?
     
-    public func read( region: ImageRegion ) -> PixelSource
+    public func read( region: ImageRegion ) -> PixelColorSource
     {
         guard CVPixelBufferGetPixelFormatType( self ) == kCVPixelFormatType_32BGRA else { preconditionFailure("This function supports only 32BGRA formatted buffers") }
         
@@ -38,7 +38,7 @@ extension CVPixelBuffer : MutableImage
         
         let nextLine : ()->Void = { pixelPtr = pixelPtr.advanced( by: nextLineOffset ) }
         
-        let nextPixel : ()->PixelType =
+        let nextPixel : ()->PixelColor =
         {
             let r : Double = Double( pixelPtr.pointee / 255 )
             pixelPtr = pixelPtr.advanced(by: 1)
@@ -47,7 +47,7 @@ extension CVPixelBuffer : MutableImage
             let b : Double = Double( pixelPtr.pointee / 255 )
             pixelPtr = pixelPtr.advanced(by: 2)
             
-            return RGBPixel(r,g,b)
+            return RGBColor(r,g,b)
         }
         
         let end : ()->Void = { CVPixelBufferUnlockBaseAddress(self,CVPixelBufferLockFlags(rawValue: CVOptionFlags(0))) }
@@ -55,7 +55,7 @@ extension CVPixelBuffer : MutableImage
         return SwiftImage.regionRasterSource( region, nextPixel: nextPixel, nextLine: nextLine, end: end )
     }
     
-    public func write( region: ImageRegion, pixelSource: @escaping PixelSource )
+    public func write( region: ImageRegion, pixelColorSource: @escaping PixelColorSource )
     {
         assert( CVPixelBufferGetPixelFormatType(self) == kCVPixelFormatType_32BGRA, "This function supports only 32BGRA formatted buffers")
         
@@ -80,7 +80,7 @@ extension CVPixelBuffer : MutableImage
         {
             for _ : Int in 0 ..< Int( region.width )
             {
-                let pixel = pixelSource()!
+                let pixel = pixelColorSource() ?? RGBColor(0,0,0,0)
                 
                 pixelPointer.pointee = UInt8(  CGFloat(pixel.blue() as CGFloat) * CGFloat(255.0) )
                 
@@ -177,7 +177,7 @@ public extension CVPixelBuffer
             if result == kCVReturnSuccess
             {
 
-                print(pixelBufferOut)
+                print(pixelBufferOut!)
 
                 outImage = pixelBufferOut!
             }

@@ -12,35 +12,28 @@ import SwiftImage
 
 extension UIImage : ConvertibleImage
 {
-    @nonobjc public func convert() -> GenericImage<PixelType>
+    @nonobjc public func convert() throws -> GenericImage<PixelColor>
     {
-        let fillPixel = RGBPixel(0,0,0)
-        
-        print("Width: \(self.width), Height: \(self.height)")
-        
-        let genericImage : GenericImage<PixelType> = GenericImage<PixelType>(width: self.width, height: self.height, fill: fillPixel )
-        
-        let region = ImageRegion( image: self )
-        
-        let regionPixelSource : PixelSource = read( region: region )
-        
-        genericImage.write( region: region, pixelSource: regionPixelSource )
-        
-        return genericImage
+        return try self.cgImage!.convert()
     }
     
-    @nonobjc public func convert() -> CGImage
+    @nonobjc public func convert() throws -> CGImage
     {
         return self.cgImage!
     }
     
-    @nonobjc public func convert() -> CIImage
+    @nonobjc public func convert() throws -> CIImage
     {
         return self.ciImage!
     }
     
-    @nonobjc public func convert() -> CVPixelBuffer
+    @nonobjc public func convert() throws -> CVPixelBuffer
     {
-        return self.cgImage!.convert()
+        return try self.cgImage!.convert()
     }
+}
+
+extension UIImage
+{
+    
 }
