@@ -9,7 +9,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftImage-iOS”
+    name: "SwiftImage-iOS"
     targets: [],
     dependencies: [ .Package(url: “https://github.com/chris-hatton/SwiftImage.git“, majorVersion: 1) ]
 )
