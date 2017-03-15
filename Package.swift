@@ -10,5 +10,6 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftImage-Apple"
-    
+    targets: [],
+    dependencies: [ .Package(url: “../SwiftImage“, majorVersion: 1) ]
 )
