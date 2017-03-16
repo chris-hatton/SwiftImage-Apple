@@ -12,6 +12,6 @@ let package = Package(
     name: "SwiftImage-iOS",
     targets: [],
     dependencies: [
-    	.Package(url: "https://github.com/chris-hatton/SwiftImage.git", majorVersion: 1)
+    	.Package(url: "../SwiftImage", majorVersion: 1)
     ]
 )
