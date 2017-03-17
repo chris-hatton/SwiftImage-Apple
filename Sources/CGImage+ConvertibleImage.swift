@@ -45,7 +45,7 @@ extension CGImage
             
             let regionPixelColorSource: PixelColorSource = self.read( region: region )
             
-            image.write( region: region, pixelColorSource: regionPixelColorSource)
+            image.write( region: region, pixelColorSource: regionPixelColorSource )
         }
         else  // Non-native format; perform a lengthier draw & copy.
         {

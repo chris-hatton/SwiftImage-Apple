@@ -20,7 +20,7 @@ extension CGImage : Image
         guard let rawData : CFData = self.dataProvider?.data else { fatalError() }
         guard let pixelBytePtr : UnsafePointer<UInt8> = CFDataGetBytePtr( rawData ) else { fatalError() }
         
-        return pixelBytePtr.withMemoryRebound(to: RGBColor.self, capacity: region.pixelCount)
+        return pixelBytePtr.withMemoryRebound( to: RGBColor.self, capacity: region.pixelCount )
         {
             pixelPtr in
             
