@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E10D8CB66ACE1059F87E54FAC38A454ECCBA1CF5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E10D8CB66ACE1059F87E54FAC38A454ECCBA1CF5" : 9223372036854775807,
+    "21F51C2FF883274FE9F0EE9C6622F93F9E7C680D" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "88FEF01F-B28E-43B0-888D-CB85FAD14C5B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E10D8CB66ACE1059F87E54FAC38A454ECCBA1CF5" : "SwiftImage-iOS\/",
+    "21F51C2FF883274FE9F0EE9C6622F93F9E7C680D" : "SwiftImage\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftImage-iOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwiftImage-iOS.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chris-hatton\/SwiftImage.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "21F51C2FF883274FE9F0EE9C6622F93F9E7C680D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/chris-hatton\/SwiftImage-Apple.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E10D8CB66ACE1059F87E54FAC38A454ECCBA1CF5"
+    }
+  ]
+}
