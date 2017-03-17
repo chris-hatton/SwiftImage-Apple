@@ -82,13 +82,13 @@ extension CVPixelBuffer : MutableImage
             {
                 let pixel = pixelColorSource() ?? RGBColor(0,0,0,0)
                 
-                pixelPointer.pointee = UInt8(  CGFloat(pixel.blue() as CGFloat) * CGFloat(255.0) )
+                pixelPointer.pointee = UInt8( Float( Float(pixel.blue() as Float) * Float(255.0) ) )
                 
                 pixelPointer = pixelPointer.advanced( by: 1 )
-                pixelPointer.pointee = UInt8(  CGFloat(pixel.green() as CGFloat) * CGFloat(255.0) )
+                pixelPointer.pointee = UInt8( Float(pixel.green() as Float) * Float(255.0) )
                 
                 pixelPointer = pixelPointer.advanced( by: 1 )
-                pixelPointer.pointee = UInt8(  CGFloat(pixel.red() as CGFloat) * CGFloat(255.0) )
+                pixelPointer.pointee = UInt8( Float(pixel.red() as Float) * Float(255.0) )
             }
             
             pixelPointer = pixelPointer.advanced( by: nextRowOffset - 1 )

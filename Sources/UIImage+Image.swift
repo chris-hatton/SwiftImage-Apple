@@ -6,6 +6,7 @@
 import Foundation
 import CoreGraphics
 import SwiftImage
+import UIKit
 
 extension UIImage : Image
 {

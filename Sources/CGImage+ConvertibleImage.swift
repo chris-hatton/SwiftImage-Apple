@@ -6,6 +6,9 @@
 import Foundation
 import CoreGraphics
 import SwiftImage
+import UIKit
+import CoreVideo
+import CoreImage
 
 extension CGImage
 {

@@ -4,7 +4,9 @@
 //
 
 import Foundation
+import UIKit
 import CoreVideo
+import CoreImage
 import SwiftImage
 
 private struct Info

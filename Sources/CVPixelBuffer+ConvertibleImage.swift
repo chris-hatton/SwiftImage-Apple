@@ -9,6 +9,10 @@
 import Foundation
 import SwiftImage
 
+import CoreVideo
+import CoreImage
+import UIKit
+
 extension CVPixelBuffer : ConvertibleImage
 {
     public func convert() throws -> CGImage

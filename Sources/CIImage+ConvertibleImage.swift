@@ -9,6 +9,7 @@
 import Foundation
 import CoreImage
 import SwiftImage
+import UIKit
 
 extension CIImage : ConvertibleImage
 {

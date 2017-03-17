@@ -7,8 +7,11 @@
 //
 
 import Foundation
-import CoreGraphics
 import SwiftImage
+
+import CoreVideo
+import CoreImage
+import UIKit
 
 extension UIImage : ConvertibleImage
 {
