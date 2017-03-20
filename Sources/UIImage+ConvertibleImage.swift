@@ -35,8 +35,3 @@ extension UIImage : ConvertibleImage
         return try self.cgImage!.convert()
     }
 }
-
-extension UIImage
-{
-    
-}

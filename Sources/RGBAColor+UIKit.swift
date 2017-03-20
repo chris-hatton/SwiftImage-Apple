@@ -10,7 +10,7 @@ import Foundation
 import SwiftImage
 import UIKit
 
-public extension RGBColor
+public extension RGBAColor
 {
     public init(_ color: UIColor)
     {
@@ -19,8 +19,8 @@ public extension RGBColor
         var blue    : CGFloat = 0.0
         var alpha   : CGFloat = 0.0
         
-        color.getRed( &red, green: &green, blue: &blue, alpha: &alpha )
+        color.getRed( &red, green: &green, blue: &blue, alpha: &alpha)
         
-        self.init( Double(red), Double(green), Double(blue) )
+        self.init( Double(red), Double(green), Double(blue), Double(alpha) )
     }
 }

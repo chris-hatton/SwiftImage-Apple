@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E12656A5CF040F82B8FFEAC /* RGBAColor+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E126A1E9180ABEB7C51C16F /* RGBAColor+UIKit.swift */; };
 		8302CF3B1E7A9B5600AA9E94 /* SwiftImage_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8302CF311E7A9B5600AA9E94 /* SwiftImage_iOS.framework */; };
 		833D1C0B1E7AB2CD002B1BFE /* CGImage+ConvertibleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D1C001E7AB2CD002B1BFE /* CGImage+ConvertibleImage.swift */; };
 		833D1C0C1E7AB2CD002B1BFE /* CGImage+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D1C011E7AB2CD002B1BFE /* CGImage+Image.swift */; };
@@ -22,6 +23,8 @@
 		833D1C3D1E7AB376002B1BFE /* RGBColor+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D1C3C1E7AB376002B1BFE /* RGBColor+UIKit.swift */; };
 		833D1C5E1E7AB5A9002B1BFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 833D1C5D1E7AB5A9002B1BFE /* UIKit.framework */; };
 		833D1C861E7BCF26002B1BFE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 833D1C851E7BCF26002B1BFE /* Info.plist */; };
+		83A67C6C1E7CC7EC00F59607 /* CoreVideoException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A67C6B1E7CC7EC00F59607 /* CoreVideoException.swift */; };
+		83A67C701E7CD99F00F59607 /* CVPixelFormat+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A67C6F1E7CD99F00F59607 /* CVPixelFormat+Info.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E126A1E9180ABEB7C51C16F /* RGBAColor+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RGBAColor+UIKit.swift"; sourceTree = "<group>"; };
 		8302CF311E7A9B5600AA9E94 /* SwiftImage_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftImage_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8302CF3A1E7A9B5600AA9E94 /* SwiftImage-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftImage-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		833D1C001E7AB2CD002B1BFE /* CGImage+ConvertibleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+ConvertibleImage.swift"; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 		833D1C5D1E7AB5A9002B1BFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		833D1C851E7BCF26002B1BFE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../SwiftImage-iOS/Sources/Info.plist"; sourceTree = "<group>"; };
 		839001781E7A9F160031AF8F /* SwiftImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftImage.xcodeproj; path = ../SwiftImage/SwiftImage.xcodeproj; sourceTree = "<group>"; };
+		83A67C6B1E7CC7EC00F59607 /* CoreVideoException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreVideoException.swift; sourceTree = "<group>"; };
+		83A67C6F1E7CD99F00F59607 /* CVPixelFormat+Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CVPixelFormat+Info.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,9 @@
 				833D1C091E7AB2CD002B1BFE /* UIImage+ConvertibleImage.swift */,
 				833D1C0A1E7AB2CD002B1BFE /* UIImage+Image.swift */,
 				833D1C3C1E7AB376002B1BFE /* RGBColor+UIKit.swift */,
+				83A67C6B1E7CC7EC00F59607 /* CoreVideoException.swift */,
+				83A67C6F1E7CD99F00F59607 /* CVPixelFormat+Info.swift */,
+				3E126A1E9180ABEB7C51C16F /* RGBAColor+UIKit.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -161,7 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				8390017E1E7A9F160031AF8F /* SwiftImage.framework */,
-				833D1C5B1E7AB4CE002B1BFE /* SwiftImage.macos.framework */,
+				833D1C5B1E7AB4CE002B1BFE /* SwiftImage.framework */,
 				839001801E7A9F160031AF8F /* SwiftImageTests.xctest */,
 			);
 			name = Products;
@@ -265,10 +274,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		833D1C5B1E7AB4CE002B1BFE /* SwiftImage.macos.framework */ = {
+		833D1C5B1E7AB4CE002B1BFE /* SwiftImage.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = SwiftImage.macos.framework;
+			path = SwiftImage.framework;
 			remoteRef = 833D1C5A1E7AB4CE002B1BFE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -317,11 +326,14 @@
 				833D1C151E7AB2CD002B1BFE /* UIImage+Image.swift in Sources */,
 				833D1C3D1E7AB376002B1BFE /* RGBColor+UIKit.swift in Sources */,
 				833D1C0D1E7AB2CD002B1BFE /* CIImage+ConvertibleImage.swift in Sources */,
+				83A67C6C1E7CC7EC00F59607 /* CoreVideoException.swift in Sources */,
 				833D1C0C1E7AB2CD002B1BFE /* CGImage+Image.swift in Sources */,
+				83A67C701E7CD99F00F59607 /* CVPixelFormat+Info.swift in Sources */,
 				833D1C141E7AB2CD002B1BFE /* UIImage+ConvertibleImage.swift in Sources */,
 				833D1C131E7AB2CD002B1BFE /* UIColor+ConvertibleColor.swift in Sources */,
 				833D1C111E7AB2CD002B1BFE /* GenericImage+ConvertibleImage.swift in Sources */,
 				833D1C0E1E7AB2CD002B1BFE /* CIImage+Image.swift in Sources */,
+				3E12656A5CF040F82B8FFEAC /* RGBAColor+UIKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

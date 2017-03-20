@@ -14,7 +14,7 @@ import SwiftImage
 
 extension CVPixelBuffer : MutableImage
 {
-    public typealias PixelColor   = RGBColor
+    public typealias PixelColor       = RGBColor
     public typealias PixelColorSource = ()->PixelColor?
     
     public func read( region: ImageRegion ) -> PixelColorSource
@@ -80,7 +80,7 @@ extension CVPixelBuffer : MutableImage
         {
             for _ : Int in 0 ..< Int( region.width )
             {
-                let pixel = pixelColorSource() ?? RGBColor(0,0,0,0)
+                let pixel = pixelColorSource() ?? RGBColor(0,0,0)
                 
                 pixelPointer.pointee = UInt8( Float( Float(pixel.blue() as Float) * Float(255.0) ) )
                 
